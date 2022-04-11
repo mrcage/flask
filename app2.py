@@ -6,8 +6,11 @@ import re
 
 app = Flask(__name__)
 
-navigation = [{"href": "/", "caption": "Home"},
-              {"href": "/hello", "caption": "Hello"}]
+navigation = [
+    {"href": "/", "caption": "Start"},
+    {"href": "/hello", "caption": "Hello"},
+    {"href": "/home", "caption": "Home"}
+]
 
 
 @app.route('/')
@@ -56,6 +59,21 @@ def hello_there(name=None):
 @app.route("/api/data")
 def get_data():
     return app.send_static_file("data.json")
+
+
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/contact/")
+def contact():
+    return render_template("contact.html")
 
 
 if __name__ == '__main__':
