@@ -53,6 +53,11 @@ def hello_there(name=None):
     )
 
 
+@app.route("/api/data")
+def get_data():
+    return app.send_static_file("data.json")
+
+
 if __name__ == '__main__':
     # app.run(threaded=True, port=5000)
     port = int(os.environ.get("PORT", 5000))
