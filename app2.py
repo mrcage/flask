@@ -1,8 +1,9 @@
 import os
-from unicodedata import name
-from flask import Flask, render_template, request, redirect, url_for
-from datetime import datetime
 import re
+from datetime import datetime
+from unicodedata import name
+
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
