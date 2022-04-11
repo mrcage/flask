@@ -10,7 +10,8 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "app2.py",
+                // "FLASK_APP": "app2.py",
+                "FLASK_APP": "hello_app.webapp",
                 "FLASK_ENV": "development"
             },
             "args": [
