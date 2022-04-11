@@ -9,11 +9,13 @@
 
 <body>
     <div class="navbar">
-        <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
-        <a href="{{ url_for('about') }}" class="navbar-item">About</a>
-        <a href="{{ url_for('contact') }}" class="navbar-item">Contact</a>
+        <a href="{{ url_for('home') }}"
+            class="navbar-brand {{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}"
+            class="navbar-item {{ 'active' if request.endpoint == 'about' else '' }}">About</a>
+        <a href="{{ url_for('contact') }}"
+            class="navbar-item {{ 'active' if request.endpoint == 'contact' else '' }}">Contact</a>
     </div>
-
     <div class="body-content">
         {% block content %}
         {% endblock %}
