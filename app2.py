@@ -7,7 +7,7 @@ import re
 app = Flask(__name__)
 
 navigation = [{"href": "/", "caption": "Home"},
-              {"href": "/date", "caption": "Date and time"}]
+              {"href": "/hello", "caption": "Hello"}]
 
 
 @app.route('/')
@@ -22,11 +22,11 @@ def login():
         user = request.form['name']
     else:
         user = request.args.get('name')
-    return redirect(url_for('hello_there', name=user))
+    return redirect(url_for('success_page', name=user))
 
 
-@app.route("/hello/<name>")
-def hello_there(name):
+@app.route("/success/<name>")
+def success_page(name):
     now = datetime.now()
     formatted_now = now.strftime("%A, %d %B, %Y at %X")
 
@@ -43,10 +43,14 @@ def hello_there(name):
     return content
 
 
-@app.route("/date")
-def date():
-    now = datetime.now()
-    return now.strftime("%A, %d %B, %Y at %X")
+@app.route("/hello/")
+@app.route("/hello/<name>")
+def hello_there(name=None):
+    return render_template(
+        "hello_there.html",
+        name=name,
+        date=datetime.now()
+    )
 
 
 if __name__ == '__main__':
